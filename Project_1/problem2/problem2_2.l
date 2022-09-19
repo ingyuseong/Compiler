@@ -15,16 +15,12 @@ COMMENT [/]{2}[^\n]*|[\/][\*][^\n]*[\*][\/]
         printf("%s ", yytext + 1);
         }
 
-int|void|if {
+int|void|if|for {
         for(int i=0; yytext[i]!='\0'; i++)
         {
             yytext[i] = yytext[i] - 32;
         }
         printf("%s ", yytext);
-        }
-
-for     {
-        printf("FOR ");
         }
 
 "="|"+=" {
