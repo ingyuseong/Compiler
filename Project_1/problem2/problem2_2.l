@@ -2,6 +2,7 @@
 #include <stdio.h>
 %}
 DIGIT [0-9]
+RESERVED (int|void|if|for)
 ID [a-zA-Z][a-zA-Z0-9_]*
 COMMENT [/]{2}[^\n]*|[\/][\*][^\n]*[\*][\/]
 
@@ -15,7 +16,7 @@ COMMENT [/]{2}[^\n]*|[\/][\*][^\n]*[\*][\/]
         printf("%s ", yytext + 1);
         }
 
-int|void|if|for {
+{RESERVED} {
         for(int i=0; yytext[i]!='\0'; i++)
         {
             yytext[i] = yytext[i] - 32;
